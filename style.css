@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    background-image: url(Assets/mall.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+header {
+    display: flex;
+    margin: 0;
+}
+.backpack{
+    max-width: 10rem;
+}
+main{
+    background-color: black;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-top: 0;
+   
+}
+main h1 {
+    font-family: 'Nosifer', sans-serif;
+   color: red;
+   font-size: 5rem;
+   
+}
+main p{
+    color: white;
+    border-radius: 2rem;
+    padding: 1rem;
+    font-size: large;
+}
+
+.scenario-screen {
+    background: red;
+}
+button {
+    background-color: red;
+    color:black;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 5px;
+    cursor: pointer;
+}
+
