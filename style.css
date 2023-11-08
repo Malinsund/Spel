@@ -9,35 +9,33 @@ header {
     display: flex;
     margin: 0;
 }
-.backpack{
+.backPack{
     max-width: 10rem;
 }
-main{
-    width: 50%;
+h1 {
+    font-family: 'Nosifer', sans-serif;
+    color: red;
+    font-size: 5rem;
+    text-shadow: 2px 2px black;
     text-align: center;
     margin: auto;
     margin-top: 0;
    
 }
-main h1 {
-    font-family: 'Nosifer', sans-serif;
-   color: red;
-   font-size: 5rem;
-   
-}
 main p{
     color: white;
-    border-radius: 2rem;
     padding: 1rem;
     font-size: large;
 }
 .story {
     background: black;
+    border-radius: 2rem;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    margin-top: 0;
 }
 
-.scenario-screen {
-    background: red;
-}
 button {
     background-color: red;
     color:black;
@@ -47,8 +45,17 @@ button {
     margin: 5px;
     cursor: pointer;
 }
+#zombieAttack{
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    z-index: 3;
+    position: absolute;
+    
+}
 #pharmacy img {
 max-width: 10rem;
+cursor: pointer;
 }
 #penicillin{
     margin-right: 5000px;
