@@ -14,16 +14,13 @@
     <link href="style.css" type="text/css" rel="stylesheet"> 
 </head>
 <body>
-    <header><span id="pickUp-count" class="pickUp-count-badge"> <img class="backPack" src="Assets/backpack.png" alt="ryggsäck"> </span></header>
+    <header><span> <img id="pickUp-count" class="backPack" class="pickUp-count-badge" src="Assets/backpack.png" alt="ryggsäck"> </span></header>
     <main id="mallMain">
         <h1>Välkommen</h1>
         <div class="story">
-            <p id="text">Det är zombieapocalyps och du har precis anlänt till ett köpcentrum. här skall du plocka på dig förnödenheter för att klara dig på din resa mot att hitta botemedlet<br> du kommer behöva gå igenom flera butiker tills din ryggsäck är full, men se upp för zombies! <br>
-            </p>
+            <p id="text">Det är zombieapocalyps och du har precis anlänt till ett köpcentrum. här skall du plocka på dig förnödenheter för att klara dig på din resa mot att hitta botemedlet<br> du kommer behöva gå igenom flera butiker tills din ryggsäck är full, men se upp för zombies! <br></p>
             <button id="nextSceneButton">Nästa Affär!</button>
-            
         </div>
-
     </main>
 
     <main id="pharmacy" style="display: none;">
@@ -40,10 +37,11 @@
     <main id="outDoorStore" style="display: none;">
         <h1>frilufsbutiken</h1>
         <div class="story">
-            <p id="text"> Okej behöver vapen! <br>
-            </p>
+            <p id="text"> Okej behöver vapen!</p>
             <button id="clothingStoreButton">smyg till nästa butik</button>
         </div>
+        <img id="pisol" src="Assets/Pistol.png" alt="">
+        <img id="knife" src="Assets/kniv.png" alt="">
     </main>
 
     <main id="clothingStore" style="display: none; background: none;">
@@ -52,21 +50,25 @@
             <p id="ZombieAttackText" style="background: black;">HELVETE EN ZOMBIE!!!! <br> tänk snabbt nu, skall du springa tillbaka, döda den med din kniv eller bara lägga dig ner i fosterställning och bli uppäten?</p>
             <button id="goBackButton">Spring Tillbaka!</button>
             <button id="kill">DÖDA!</button>
-            <button id="layDownAndDie">Lägger mig ner och dör</button>
+            <button id="giveUp">Lägger mig ner och dör</button>
         </div>
-        <div class="story">
-        <h1>Klädaffären</h1>
-        <p id="text"> phew, Du har klarat dig hittills! nu skall vi bara se om det finns någat bra att plocka upp här med, se dig omkring efter något bra, när du är klar är det bara en butik kvar, skynda dig! <br>
-        </p>
-        </div>
+            <div class="story">
+                <h1>Klädaffären</h1>
+                <p id="text"> phew, Du har klarat dig hittills! nu skall vi bara se om det finns någat bra att plocka upp här med, se dig omkring efter något bra, när du är klar är det bara en butik kvar, skynda dig! </p>
+            </div>
     </main>
 
     <main id="groceryStore" style="display: none;">
         <h1 style="font-family: 'Courier New', Courier, monospace;">Du klarade dig!</h1>
         <div class="story">
-            <p id="text"> sikken jäkla tur!<br>
-            </p>
+            <p id="text"> sikken jäkla tur!</p>
             <button id="backDoorButton">till bakdörren!</button>
+        </div>
+    </main>
+    <main id="backDoor" style="display: none;">
+        <h1 style="font-family: 'Courier New', Courier, monospace;">Bra Jobbat!</h1>
+        <div class="story">
+            <p id="text">Nu är du redo att ta dig ut och fortsätta överleva i en hemsk hemsk värld!</p>
         </div>
     </main>
 

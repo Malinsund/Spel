@@ -35,6 +35,9 @@ main p{
     margin: auto;
     margin-top: 0;
 }
+img{
+    cursor: pointer;
+}
 
 button {
     background-color: red;
@@ -50,8 +53,10 @@ button {
     text-align: center;
     margin: auto;
     z-index: 3;
-    position: absolute;
-    
+    position: absolute; 
+}
+#zombieAttackText {
+    background: black;
 }
 #pharmacy img {
 max-width: 10rem;
@@ -66,3 +71,22 @@ cursor: pointer;
     margin-left: 700px;
     margin-bottom: 500px;
 }
+.pickUp-count-Badge {
+    display: grid;
+    color: white;
+    place-items: center;
+    border-radius: 100rem;
+    width: 2rem;
+    height: 2rem;
+}
+#outDoorStore img{
+    max-width: 10rem;
+}
+#pistol{
+    margin-top: 20rem;
+}
+#knife{
+    margin-left: 50rem;
+    margin-bottom: 30rem;
+}
+
