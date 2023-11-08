@@ -13,6 +13,8 @@ function setupSceneButtons() {
     document.getElementById("nextSceneButton").addEventListener('click', renderScenePharmacy);
     document.getElementById("outDoorStoreButton").addEventListener('click', renderSceneOutDoorStore);
     document.getElementById("clothingStoreButton").addEventListener('click', renderSceneClothingStore);
+    document.getElementById('kill').addEventListener('click', renderSceneGrocerystore);
+    document.getElementById("backDoorButton").addEventListener('click', renderSceneBackDoor);
 
 }
 
@@ -39,7 +41,6 @@ function renderScenePharmacy() {
     backgroundImg.style.backgroundImage = 'url("assets/pharmacy.png")';
     backgroundImg.style.backgroundSize = "cover";
 }
-
 function renderSceneOutDoorStore() {
     // kommer åt apoteket?
     var pharmacy = document.getElementById('pharmacy');
@@ -55,11 +56,8 @@ function renderSceneOutDoorStore() {
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/grocerystore.png")';
     backgroundImg.style.backgroundSize = "cover";
-    setInterval(toggleBackgroundImg, 800);
-}
-
+}   
 function renderSceneClothingStore() {
-    
     var pharmacy = document.getElementById('outDoorStore');
 
     // tar bort frilufsbutiken
@@ -81,38 +79,111 @@ function renderSceneClothingStore() {
     backgroundImg.style.backgroundSize = "cover";
 }
 
+function Choice() {
+    const goBack = document.getElementById("goBackButton");
+    const kill = document.getElementById("kill");
+    const giveUp = document.getElementById("giveUp");
 
+    goBack.addEventListener("click", function() {
+        renderSceneOutDoorStore();
+    });
 
-/*här vill jag ju att inventory och rycksäcken skall fungera som en kundkorg/inventory*/
-const backPack = []
+    kill.addEventListener("click", function() {
+        renderSceneGrocerystore();
+    });
 
-//ta bort skiten från bilden
-document.getElementById("penicillin").addEventListener('click', function() {
-    addToBackPack("penicillin");
-    const medicin = document.querySelector("#penicillin");
-    medicin.remove();
+    giveUp.addEventListener("click", function() {
+        
+        const decision = prompt("du är en riktig fegis och är nu en zombie, synd!");
+        
+    });
+}
+/*
+function Choice(){
+    const goBack = document.getElementById("goBackButton");
+    const kill = document.getElementById("kill");
+    const giveUp = document.getElementById("giveUp");
 
-});
-//lägg till skit i inventory/ryggsäck kanske?
-function addToBackPack(backPackId) {
-    const medicin = document.getElementById("#penicillin");
-    inventory.push(penicillin.src);
+    if (goBack.clicked === true){
+        renderSceneOutDoorStore;
+    }
+    else if (kill.clicked === true){
+        renderSceneGrocerystore;
+    }
+    else if (giveUp.clicked === true){
+        alert("du är en riktig fegis och är nu en zombie, synd!")
+    }
+    else {
+        //vet inte
+    }
+}*/
+function renderSceneGrocerystore(){
+    // kommer åt klädaffären
+    var clothingStore = document.getElementById('clothingStore');
+
+    // tar bort klädaffären
+    while (clothingStore.firstChild) {
+        clothingStore.removeChild(clothingStore.firstChild);
+    }
+    // visar mataffären
+    groceryStore.style.display = 'block';
+
+   
+    const backgroundImg = document.querySelector("body");
+    backgroundImg.style.backgroundImage = 'url("Assets/grocerystore1.png")';
+    backgroundImg.style.backgroundSize = "cover";
+}
+function renderSceneBackDoor(){
+    var groceryStore = document.getElementById('groceryStore');
+
+    while (groceryStore.firstChild) {
+        groceryStore.removeChild(groceryStore.firstChild);
+    }
+    backDoor.style.display = 'block';
+
+    const backgroundImg = document.querySelector("body");
+    backgroundImg.style.backgroundImage = 'url("Assets/backdoor.png")';
+    backgroundImg.style.backgroundSize = "cover";
+
 }
 
-document.getElementById("firstAid").addEventListener('click', function() {
-    addToBackPack("firstAid");
+/*här vill jag ju att inventory och rycksäcken skall fungera som en kundkorg/inventory*/
+
+// plocka ur functionerna här med precis som med scenerna!
+
+
+let backPack = []
+
+//ta bort skiten från bilden
+document.getElementById("penicillin").addEventListener('click', pickUps);
+document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
+
+function pickUps() {
+    const medicin = document.querySelector("#penicillin");
+    medicin.remove();
+    backPack.push();
+    renderPickUpCountBadge();
+}
+function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
+    renderPickUpCountBadge();
+}
+//lägg till skit i inventory/ryggsäck kanske?
 
-});
+function addToBackPack(backPack) {
+    const medicin = document.getElementById("#penicillin");
+    backPack.push(medicin);
+    renderPickUpCountBadge();
+}
 
 
+//penicillin.src
 
 
-
-//const pickUps = document.createElement("img");
+//const pickUps = document.createElement("button");
 //pickUps.src = "Assets/penicillin.png";
-//pickUps.classname = "penicillin";
+//pickUps.className = "penicillin";
 //pickUps.onclick = function(){
 //    backPack.push(product)
 //    savepickUpsToLS();
@@ -122,7 +193,7 @@ document.getElementById("firstAid").addEventListener('click', function() {
 //    document.body.appendChild(pickUps);
 //};
 
-function savepickUpsToLS(){
+function savePickUpsToLS(){
     const backPackString = JSON.stringify(backPack)
     localStorage.setItem('backpack', backPackString);
 }
