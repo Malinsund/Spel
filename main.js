@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", main);
 
-let backPack = []
+
 function main (){
     loadPickUpFromLS();
     renderPickUpCountBadge();
@@ -88,6 +88,28 @@ document.getElementById("clothingStoreButton").addEventListener('click', functio
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/clothingstore.png")';
     backgroundImg.style.backgroundSize = "cover";
+});
+
+const backPack = []
+
+//ta bort skiten från bilden
+document.getElementById("penicillin").addEventListener('click', function() {
+    addToInventory("penicillin");
+    const medicin = document.querySelector("#penicillin");
+    medicin.remove();
+
+});
+//lägg till skit i inventory/ryggsäck kanske?
+function addToInventory(inventoryId) {
+    const medicin = document.getElementById("#penicilin");
+    inventory.push(penicillin.src);
+}
+
+document.getElementById("firstAid").addEventListener('click', function() {
+    addToInventory("firstAid");
+    const medicin2 = document.querySelector("#firstAid");
+    medicin2.remove();
+
 });
 
 

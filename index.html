@@ -17,7 +17,7 @@
     <header><span id="pickUp-count" class="pickUp-count-badge"> <img class="backpack" src="Assets/backpack.png" alt="ryggsäck"> </span></header>
     <main id="mallMain">
         <h1>Välkommen</h1>
-        <div>
+        <div class="story">
             <p id="text">Det är zombieapocalyps och du har precis anlänt till ett köpcentrum. här skall du plocka på dig förnödenheter för att klara dig på din resa mot att hitta botemedlet<br> du kommer behöva gå igenom flera butiker tills din ryggsäck är full, men se upp för zombies! <br>
             </p>
             <button id="nextSceneButton">Nästa Affär!</button>
@@ -27,16 +27,17 @@
     </main>
     <main id="pharmacy" style="display: none;">
         <h1>kom du hit nuuuuuu?</h1>
-        <div>
+        <div class="story">
             <p id="text">faaaan vad braaaaa dååååååå <br>
             </p>
             <button id="outDoorStoreButton">knappjävel</button>
         </div>
-
+        <img id="penicillin" src="Assets/penicillin.png" >
+        <img id="firstAid" src="Assets/firstAid.png">
     </main>
     <main id="outDoorStore" style="display: none;">
         <h1>frilufsbutiken</h1>
-        <div>
+        <div class="story">
             <p id="text"> Okej behöver vapen! <br>
             </p>
             <button id="clothingStoreButton">smyg till nästa butik</button>
@@ -50,7 +51,7 @@
             <button id="kill">DÖDA!</button>
             <button id="layDownAndDie">Lägger mig ner och dör</button>
         </div>
-        <div style="background: black;">
+        <div class="story">
         <h1>Klädaffären</h1>
         <p id="text"> phew, Du har klarat dig hittills! nu skall vi bara se om det finns någat bra att plocka upp här med, se dig omkring efter något bra, när du är klar är det bara en butik kvar, skynda dig! <br>
         </p>
@@ -58,7 +59,7 @@
     </main>
     <main id="groceryStore" style="display: none;">
         <h1 style="font-family: 'Courier New', Courier, monospace;">Du klarade dig!</h1>
-        <div>
+        <div class="story">
             <p id="text"> sikken jäkla tur!<br>
             </p>
             <button id="backDoorButton">till bakdörren!</button>

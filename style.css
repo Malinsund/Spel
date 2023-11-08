@@ -13,7 +13,6 @@ header {
     max-width: 10rem;
 }
 main{
-    background-color: black;
     width: 50%;
     text-align: center;
     margin: auto;
@@ -32,6 +31,9 @@ main p{
     padding: 1rem;
     font-size: large;
 }
+.story {
+    background: black;
+}
 
 .scenario-screen {
     background: red;
@@ -45,4 +47,15 @@ button {
     margin: 5px;
     cursor: pointer;
 }
-
+#pharmacy img {
+max-width: 10rem;
+}
+#penicillin{
+    margin-right: 5000px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+#firstAid {
+    margin-left: 700px;
+    margin-bottom: 500px;
+}
