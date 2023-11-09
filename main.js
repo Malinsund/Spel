@@ -15,6 +15,7 @@ function setupSceneButtons() {
     document.getElementById("clothingStoreButton").addEventListener('click', renderSceneClothingStore);
     document.getElementById('kill').addEventListener('click', renderSceneGrocerystore);
     document.getElementById("backDoorButton").addEventListener('click', renderSceneBackDoor);
+    
 
 }
 
@@ -79,44 +80,25 @@ function renderSceneClothingStore() {
     backgroundImg.style.backgroundSize = "cover";
 }
 
-function Choice() {
-    const goBack = document.getElementById("goBackButton");
-    const kill = document.getElementById("kill");
-    const giveUp = document.getElementById("giveUp");
+document.getElementById("goBackButton").addEventListener('click', function() {
+   // alert("åh nej, zombien fick tag i ditt ben och du kan inte fly!");
+   const goBack = document.createElement('div');
+   goBack.style.width = "50%";
+   goBack.style.background = "black";
+   goBack.style.color = "white";
+   goBack.textContent = "bajs bajs bajs bajs";
 
-    goBack.addEventListener("click", function() {
-        renderSceneOutDoorStore();
-    });
+   body.append(goBack);
 
-    kill.addEventListener("click", function() {
-        renderSceneGrocerystore();
-    });
 
-    giveUp.addEventListener("click", function() {
-        
-        const decision = prompt("du är en riktig fegis och är nu en zombie, synd!");
-        
-    });
-}
-/*
-function Choice(){
-    const goBack = document.getElementById("goBackButton");
-    const kill = document.getElementById("kill");
-    const giveUp = document.getElementById("giveUp");
 
-    if (goBack.clicked === true){
-        renderSceneOutDoorStore;
-    }
-    else if (kill.clicked === true){
-        renderSceneGrocerystore;
-    }
-    else if (giveUp.clicked === true){
-        alert("du är en riktig fegis och är nu en zombie, synd!")
-    }
-    else {
-        //vet inte
-    }
-}*/
+});
+document.getElementById("giveUp").addEventListener('click', function() {
+    alert("Din fegis, grattis till ett evigt liv som zombie.")
+});
+
+
+
 function renderSceneGrocerystore(){
     // kommer åt klädaffären
     var clothingStore = document.getElementById('clothingStore');
@@ -152,30 +134,58 @@ function renderSceneBackDoor(){
 // plocka ur functionerna här med precis som med scenerna!
 
 
-let backPack = []
+
 
 //ta bort skiten från bilden
-document.getElementById("penicillin").addEventListener('click', pickUps);
+document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
+document.getElementById("pistol").addEventListener('click', pickUpGun);
+document.getElementById("knife").addEventListener('click', pickUpKnife)
+document.getElementById("konserv").addEventListener('click', pickUpKonserv)
+document.getElementById("water").addEventListener('click', pickUpWater)
 
-function pickUps() {
+function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
+
     backPack.push();
-    renderPickUpCountBadge();
+    r
 }
 function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
     renderPickUpCountBadge();
 }
-//lägg till skit i inventory/ryggsäck kanske?
+function pickUpGun() {
+    const gun = document.querySelector("#pistol");
+    gun.remove();
+}
+function pickUpKnife() {
+    const knife = document.querySelector("#knife");
+    knife.remove()
+}
+function pickUpkonserv() {
+    const konserv = document.querySelector("#konserv");
+    konserv.remove()
 
+}function pickUpWater() {
+    const water = document.querySelector("#water");
+    water.remove()
+}
+
+
+
+let backPack = []
+
+
+//lägg till skit i inventory/ryggsäck kanske?
+/*
 function addToBackPack(backPack) {
     const medicin = document.getElementById("#penicillin");
     backPack.push(medicin);
     renderPickUpCountBadge();
-}
+}*/
+
 
 
 //penicillin.src
@@ -184,14 +194,14 @@ function addToBackPack(backPack) {
 //const pickUps = document.createElement("button");
 //pickUps.src = "Assets/penicillin.png";
 //pickUps.className = "penicillin";
-//pickUps.onclick = function(){
-//    backPack.push(product)
-//    savepickUpsToLS();
-//
-//    renderPickUpCountBadge();
-//
-//    document.body.appendChild(pickUps);
-//};
+pickUps.onclick = function(){
+   backPack.push(product)
+    savePickUpsToLS();
+
+    renderPickUpCountBadge();
+
+   document.getElementsByClassName('backPack').append(pickUps);
+};
 
 function savePickUpsToLS(){
     const backPackString = JSON.stringify(backPack)
@@ -208,7 +218,7 @@ function renderPickUpCountBadge() { // Detta är den andra funktionen som säger
     span.content = backPack.length;
 }
 
-
+append(pickUps);
 
 
 
