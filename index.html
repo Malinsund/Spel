@@ -16,21 +16,22 @@
 <body>
     <header><span> <img id="backPack-count" class="backPack" class="backPack-count-badge" src="Assets/backpack.png" alt="ryggsäck"> </span></header>
 
-    <main id="mallMain">
+    <main id="mallMain"> 
+        <audio id="introAudio" src="audio/dark-underworld-144813.mp3"></audio>
         <h1>Välkommen</h1>
         <div class="story">
-            <p id="text">Det är zombieapocalyps och du har precis anlänt till ett köpcentrum. här skall du plocka på dig förnödenheter för att klara dig på din resa mot att hitta botemedlet<br> du kommer behöva gå igenom flera butiker tills din ryggsäck är full, men se upp för zombies! <br></p>
-            <button id="nextSceneButton">Nästa Affär!</button>
+            <p id="text">Det är zombieapocalyps, du är utsvulten och har blivit av med dina vapen, äntligen har dukommit in i ett köpcentrum. Du har barrikerat ingången för att inte bli förföljd av Zombies. <br> Ända sättet att ta sig ut är genom bakdörren. Var tyst och snabb medan du tar dig genom butik för butik och plocka de saker du behöver på vägen <br> OCH DU se upp för zombies!</p>
+            <button id="nextSceneButton">Till första butiken</button>
             <img id="testBild" src="Assets/paracetamol.png" alt="paracetamol">
         </div>
     </main>
 
     <main id="pharmacy" style="display: none;">
-        <h1>kom du hit nuuuuuu?</h1>
+        <h1>Apoteket</h1>
         <div class="story">
-            <p id="text">faaaan vad braaaaa dååååååå <br>
+            <p id="text">Första butiken är ett apotek, kolla om det finns något här du behöver ute i världen, plocka upp det du behöver och lägg det i din ryggsäck, forstätt sedan till nästa butik<br>
             </p>
-            <button id="outDoorStoreButton">knappjävel</button>
+            <button id="outDoorStoreButton">Fortsätt</button>
         </div>
         <img id="penicillin" src="Assets/penicillin.png" >
         <img id="firstAid" src="Assets/firstAid.png">
@@ -39,7 +40,7 @@
     <main id="outDoorStore" style="display: none;">
         <h1>frilufsbutiken</h1>
         <div class="story">
-            <p id="text"> Okej behöver vapen!</p>
+            <p id="text">Perfekt, inga zombies än, men prasslade det inte precis? bäst att vara extra tyst nu när du tar dig till nästa butik, tysta vapen är att föredra för att inte locka till sig fler zombies!</p>
             <button id="clothingStoreButton">smyg till nästa butik</button>
         </div>
         <img id="pistol" src="Assets/Pistol.png" alt="">
@@ -56,21 +57,21 @@
         </div>
             <div class="story">
                 <h1>Klädaffären</h1>
-                <p id="text"> phew, Du har klarat dig hittills! nu skall vi bara se om det finns någat bra att plocka upp här med, se dig omkring efter något bra, när du är klar är det bara en butik kvar, skynda dig! </p>
+                <p id="text"> phew, Du har klarat dig hittills! nu skall vi bara se om det finns något bra att plocka upp här med, se dig omkring efter något bra, det är bara en butik kvar innan du ser bakdörren och kan fortsätta, skynda dig! </p>
             </div>
     </main>
 
     <main id="groceryStore" style="display: none;">
-        <h1 style="font-family: 'Courier New', Courier, monospace;">Du klarade dig!</h1>
+        <h1>Mataffären</h1>
         <div class="story">
-            <p id="text"> sikken jäkla tur!</p>
+            <p id="text"> phu vilken tur, du klarade dig genom att döda zombien, snyggt jobbat! packa nu lite proviant så du klarar dig ett tag, när du går härifrån kommer du förmodligen aldrig att komma tillbaka! </p>
             <button id="backDoorButton">till bakdörren!</button>
         </div>
         <img id="konserv" src="Assets/konserv.png" alt="Konserv">
         <img id="water" src="Assets/vatten.png" alt="vatten">
     </main>
     <main id="backDoor" style="display: none;">
-        <h1 style="font-family: 'Courier New', Courier, monospace;">Bra Jobbat!</h1>
+        <h1 style="font-family: 'Courier New', Courier, monospace; color: yellow;">DU KLARADE DET!</h1>
         <div class="story">
             <p id="text">Nu är du redo att ta dig ut och fortsätta överleva i en hemsk hemsk värld!</p>
         </div>

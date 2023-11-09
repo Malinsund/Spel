@@ -1,10 +1,15 @@
 window.addEventListener("DOMContentLoaded", main);
 
 
+let mySound = new Audio('audio/dark-underworld-144813.mp3');
+
+
 function main (){
     loadBackPackFromLS();
     renderBackPackCountBadge();
     setupSceneButtons();
+    
+    
     // showScene("start")
 }
 
@@ -16,7 +21,6 @@ function setupSceneButtons() {
     document.getElementById('kill').addEventListener('click', renderSceneGrocerystore);
     document.getElementById("backDoorButton").addEventListener('click', renderSceneBackDoor);
     
-
 }
 
 // function showScene(htmlId) {
@@ -30,7 +34,8 @@ function setupSceneButtons() {
 function renderScenePharmacy() {
     // kommer åt startsidan
     var mallMain = document.getElementById('mallMain');
-
+   
+    
     // tar bort startsidan
     while (mallMain.firstChild) {
         mallMain.removeChild(mallMain.firstChild);
@@ -38,9 +43,11 @@ function renderScenePharmacy() {
     // visar apoteket
     pharmacy.style.display = 'block';
 
+    mySound.play();
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("assets/pharmacy.png")';
     backgroundImg.style.backgroundSize = "cover";
+
 }
 function renderSceneOutDoorStore() {
     // kommer åt apoteket?
@@ -50,14 +57,18 @@ function renderSceneOutDoorStore() {
     while (pharmacy.firstChild) {
         pharmacy.removeChild(pharmacy.firstChild);
     }
-    // Dvisar frilufsbutiken
+    // visar frilufsbutiken
     outDoorStore.style.display = 'block';
 
    
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/grocerystore.png")';
     backgroundImg.style.backgroundSize = "cover";
-}   
+
+    mySound.pause();
+ 
+} 
+
 function renderSceneClothingStore() {
     var pharmacy = document.getElementById('outDoorStore');
 
@@ -72,29 +83,63 @@ function renderSceneClothingStore() {
 
     setTimeout(function(){
         zombieAttack.style.display = 'block';
-    }, 3000);
+    }, 300);
 
-   
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/clothingstore.png")';
     backgroundImg.style.backgroundSize = "cover";
 }
 
-document.getElementById("goBackButton").addEventListener('click', function() {
-   // alert("åh nej, zombien fick tag i ditt ben och du kan inte fly!");
-   const goBack = document.createElement('div');
-   goBack.style.width = "50%";
-   goBack.style.background = "black";
-   goBack.style.color = "white";
-   goBack.textContent = "bajs bajs bajs bajs";
+document.getElementById("goBackButton").addEventListener('click', showMessage);
 
-   body.append(goBack);
+function showMessage() {
+
+    let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
+    divContainer.className = "go-back";
+    divContainer.textContent = "NEEEEJ zombien fick tag i dig, du måste försöka döda den";
+
+    const confirmButton = document.createElement('button');
+    confirmButton.className = "confirm-button";
+    confirmButton.textContent = "OK!";
+    confirmButton.onclick = function(){
+       // renderSceneClothingStore
+    
+    }
+    
+    document.body.appendChild(divContainer);
+    divContainer.append(confirmButton);
+    
+    let parent = document.getElementById('clothingStore').parentNode;
+    parent.replaceChild(divContainer, document.getElementById('clothingStore'));
+
+   // return divContainer();
 
 
 
-});
+}
 document.getElementById("giveUp").addEventListener('click', function() {
-    confirm("Din fegis, grattis till ett evigt liv som zombie.")
+
+    let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
+    divContainer.className = "go-back";
+    divContainer.textContent = "Din Fegis!! \n Du har valt ett evigt miserabelt hjärn-ätar-liv \n lycka till!";
+
+    const confirmButton = document.createElement('button');
+    confirmButton.className = "confirm-button";
+    confirmButton.textContent = "bu";
+    confirmButton.onclick = function(){
+        location.reload();
+    },    
+    
+    document.body.appendChild(divContainer);
+    divContainer.append(confirmButton);
+    
+    let parent = document.getElementById('clothingStore').parentNode;
+    parent.replaceChild(divContainer, document.getElementById('clothingStore'));
+
+    const backgroundImg = document.querySelector("body");
+    backgroundImg.style.backgroundImage = 'url("Assets/dead.png")';
+    backgroundImg.style.backgroundSize = "cover";
+    
     
 });
 
@@ -148,6 +193,8 @@ document.getElementById("water").addEventListener('click', pickUpWater)
 
 function pickUpParacetamol() {
     const tablett = document.querySelector("#testBild");
+    
+    
     tablett.remove();
 
     backPack.push();
@@ -184,6 +231,7 @@ function pickUpKonserv() {
     const water = document.querySelector("#water");
     water.remove()
 }
+
 
 
 

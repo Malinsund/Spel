@@ -89,4 +89,22 @@ cursor: pointer;
     margin-left: 50rem;
     margin-bottom: 30rem;
 }
+#groceryStore img{
+    max-width: 10rem;
+}
+
+.go-back{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    padding: 1rem;
+    border-radius: 2rem;
+
+}
+
 
