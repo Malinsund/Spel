@@ -2,8 +2,8 @@ window.addEventListener("DOMContentLoaded", main);
 
 
 function main (){
-    loadPickUpFromLS();
-    renderPickUpCountBadge();
+    loadBackPackFromLS();
+    renderBackPackCountBadge();
     setupSceneButtons();
     // showScene("start")
 }
@@ -94,7 +94,8 @@ document.getElementById("goBackButton").addEventListener('click', function() {
 
 });
 document.getElementById("giveUp").addEventListener('click', function() {
-    alert("Din fegis, grattis till ett evigt liv som zombie.")
+    confirm("Din fegis, grattis till ett evigt liv som zombie.")
+    
 });
 
 
@@ -137,6 +138,7 @@ function renderSceneBackDoor(){
 
 
 //ta bort skiten från bilden
+document.getElementById("testBild").addEventListener('click', pickUpParacetamol); //test
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
 document.getElementById("pistol").addEventListener('click', pickUpGun);
@@ -144,17 +146,27 @@ document.getElementById("knife").addEventListener('click', pickUpKnife)
 document.getElementById("konserv").addEventListener('click', pickUpKonserv)
 document.getElementById("water").addEventListener('click', pickUpWater)
 
+function pickUpParacetamol() {
+    const tablett = document.querySelector("#testBild");
+    tablett.remove();
+
+    backPack.push();
+    renderBackPackCountBadge();
+    
+}
+
 function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
 
     backPack.push();
-    r
+    renderBackPackCountBadge();
+    
 }
 function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
-    renderPickUpCountBadge();
+    renderBackPackCountBadge();
 }
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
@@ -164,7 +176,7 @@ function pickUpKnife() {
     const knife = document.querySelector("#knife");
     knife.remove()
 }
-function pickUpkonserv() {
+function pickUpKonserv() {
     const konserv = document.querySelector("#konserv");
     konserv.remove()
 
@@ -194,31 +206,32 @@ function addToBackPack(backPack) {
 //const pickUps = document.createElement("button");
 //pickUps.src = "Assets/penicillin.png";
 //pickUps.className = "penicillin";
-pickUps.onclick = function(){
-   backPack.push(product)
-    savePickUpsToLS();
+//.onclick = function(){
+   backPack.push()
+    saveBackPackToLS();
 
-    renderPickUpCountBadge();
+    renderBackPackCountBadge();
 
-   document.getElementsByClassName('backPack').append(pickUps);
-};
+  // testBild.append(backPack);
+//};
 
-function savePickUpsToLS(){
+function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att spara kundkorgen till local storage
     const backPackString = JSON.stringify(backPack)
-    localStorage.setItem('backpack', backPackString);
-}
-function loadPickUpFromLS(){
-    if(localStorage.key("backpack")){
-        const backPackString = localStorage.getItem('backpack');
-        backPack = JSON.parse(backPackString);
-    }
-}
-function renderPickUpCountBadge() { // Detta är den andra funktionen som säger till att siffran skall visas i headern i html
-    const span = document.getElementById("pickUp-count");
-    span.content = backPack.length;
-}
+    localStorage.setItem('backPack', backPackString);
+ }
+ /** Loads the cart from local storage and saves it to the global array. */
+ function loadBackPackFromLS(){
+   // if (!localStorage.key('cart')) return;
+   if(localStorage.key("backPack")){
+    const backPackString = localStorage.getItem('backPack');
+    cart = JSON.parse(backPackString);
+   }
+ }
+function renderBackPackCountBadge() { // Detta är den andra funktionen som säger till att siffran skall visas i headern i html
+    const span = document.getElementById("backPack-count");
+    span.textContent = backPack.length;
 
-append(pickUps);
+}
 
 
 
