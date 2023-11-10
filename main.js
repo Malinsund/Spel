@@ -6,10 +6,18 @@ let prassel = new Audio('audio/prassel.mp3');
 let zombieSound = new Audio ('audio/zomiesound.wav');
 
 
+const header = document.querySelector(".header"); 
+const backPackCount = document.createElement('img')
+backPackCount.src = "Assets/backpack.png";
+backPackCount.className = "backPack";
+
+
+header.appendChild(backPackCount);
+
+
 function main (){
     loadBackPackFromLS();
     setupSceneButtons();
-    
 }
 
 function setupSceneButtons() {
@@ -19,7 +27,10 @@ function setupSceneButtons() {
     document.getElementById("clothingStoreButton").addEventListener('click', renderSceneClothingStore);
     document.getElementById('kill').addEventListener('click', renderSceneGrocerystore);
     document.getElementById("backDoorButton").addEventListener('click', renderSceneBackDoor);
-    
+
+    /* dessa två är vid flervalsfrågan på zombie-attack scenen */
+    document.getElementById("goBackButton").addEventListener('click', renderGoBackMessage);
+    document.getElementById("giveUp").addEventListener('click', renderGiveUpMessage);
 }
 
 // function showScene(htmlId) {
@@ -29,7 +40,9 @@ function setupSceneButtons() {
 //     container.innerHTML = "";
 //     container.append(sceneHtml);
 // }
-
+/** Hämtar nästa scen och tar bort den gamla scenen via knapptryck, bakgrundbild och innehåll ändras
+ * @function
+ */
 function renderScenePharmacy() {
     // kommer åt startsidan
     var mallMain = document.getElementById('mallMain');
@@ -94,9 +107,8 @@ function renderSceneClothingStore() {
 
 }
 
-document.getElementById("goBackButton").addEventListener('click', showMessage);
 
-function showMessage() {
+function renderGoBackMessage() {
 
     let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
     divContainer.className = "go-back";
@@ -121,7 +133,7 @@ function showMessage() {
 
 
 }
-document.getElementById("giveUp").addEventListener('click', function() {
+function renderGiveUpMessage() {
 
     let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
     divContainer.className = "go-back";
@@ -145,8 +157,7 @@ document.getElementById("giveUp").addEventListener('click', function() {
     backgroundImg.style.backgroundSize = "cover";
     
     
-});
-
+}
 function renderSceneGrocerystore(){
     // kommer åt klädaffären
     var clothingStore = document.getElementById('clothingStore');
@@ -189,8 +200,9 @@ function increaseCount(){
 
 
 
-// När man klickar på bilderna tas de bort och läggs i ryggsäcken
-document.getElementById("testBild").addEventListener('click', pickUpParacetamol); //test
+/** Här är de object/bilder man kan klicka på i spelet
+ * 
+ */
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
 document.getElementById("pistol").addEventListener('click', pickUpGun);
@@ -198,14 +210,10 @@ document.getElementById("knife").addEventListener('click', pickUpKnife)
 document.getElementById("konserv").addEventListener('click', pickUpKonserv)
 document.getElementById("water").addEventListener('click', pickUpWater)
 
-function pickUpParacetamol() {
-    const tablett = document.querySelector("#testBild");
-    
-    tablett.remove();
-    increaseCount();
-    
-}
-
+/**Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom
+ * 
+ * @function
+ */
 function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
@@ -218,7 +226,6 @@ function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
     increaseCount();
-    renderBackPackCountBadge();
 }
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
@@ -242,15 +249,10 @@ function pickUpKonserv() {
 }
 
 
-
-
 let backPack = []
 
    // backPack.push()
    // saveBackPackToLS();
-
-    //renderBackPackCountBadge();
-
   // testBild.append(backPack);
 //};
 

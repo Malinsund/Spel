@@ -16,14 +16,18 @@ header {
 }
 #badgeCount {
     color: white;
-    font-size: xx-large;
+    font-size: x-large;
     position: absolute;
-    left: 5px;
-    top: 5px;
-    background-color: rgb(117, 157, 117);
-    padding: 0.5rem;
-    border-radius: 1rem;
-    border: 0.2rem solid green;
+    left: 80px;
+    background-color: rgb(78, 151, 78);
+    padding:0.6rem;
+    border-radius: 10rem;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    padding-bottom: 1rem;
+
+    z-index: 3;
 }
 h1 {
     font-family: 'Nosifer', sans-serif;
@@ -56,7 +60,7 @@ button {
     background-color: red;
     color:black;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 2px;
     padding: 1rem;
     margin: 5px;
     cursor: pointer;
