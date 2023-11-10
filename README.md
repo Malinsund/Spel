@@ -20,6 +20,11 @@
 - vatten
 - matkonserv
 
+> För att kunna lösa detta projektet har jag använt mig av hjälpmedel så som ai-genererade bakgrundsbilder, jag har även tagit hjälp av klasskompisar och frågat chatGPT om saker med delade resultat. w3Schools har varit väldigt behjälplig när det har behövt finjusterats på sina håll.
+[w3school](https://www.w3schools.com/)
+[AI image generator](https://gencraft.com/generate)
+[chatGPT](https://chat.openai.com/)
+
 _detta är det första spelet jag har testat att göra med javaScript och har gett mig både huvudvärk och mycket kunskap! jag ser fram emot att lära mig mer för att kunna göra fler och mer avancerade saker, hade jag haft mer tid på mig skulle jag ha gjort fler vägval i spelet och även försökt göra det mer klurigt!_
 
-[Min html fil](./index.html)
+[Min html fil]()
