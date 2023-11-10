@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", main);
 
 
 let mySound = new Audio('audio/dark-underworld-144813.mp3');
+let prassel = new Audio('audio/prassel.mp3');
 
 
 function main (){
@@ -66,7 +67,8 @@ function renderSceneOutDoorStore() {
     backgroundImg.style.backgroundSize = "cover";
 
     mySound.pause();
- 
+    prassel.play();
+    
 } 
 
 function renderSceneClothingStore() {
@@ -83,11 +85,14 @@ function renderSceneClothingStore() {
 
     setTimeout(function(){
         zombieAttack.style.display = 'block';
-    }, 300);
+    }, 1500);
 
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/clothingstore.png")';
     backgroundImg.style.backgroundSize = "cover";
+
+    prassel.pause();
+
 }
 
 document.getElementById("goBackButton").addEventListener('click', showMessage);
@@ -143,8 +148,6 @@ document.getElementById("giveUp").addEventListener('click', function() {
     
 });
 
-
-
 function renderSceneGrocerystore(){
     // kommer 책t kl채daff채ren
     var clothingStore = document.getElementById('clothingStore');
@@ -178,7 +181,11 @@ function renderSceneBackDoor(){
 /*h채r vill jag ju att inventory och rycks채cken skall fungera som en kundkorg/inventory*/
 
 // plocka ur functionerna h채r med precis som med scenerna!
-
+function increaseCount(){
+    let badge = document.getElementById('badgeCount');
+    let currentCount = parseInt(badge.innerText);
+    badge.innerText = currentCount + 1;
+}
 
 
 
@@ -197,39 +204,44 @@ function pickUpParacetamol() {
     
     tablett.remove();
 
-    backPack.push();
-    renderBackPackCountBadge();
+
     
 }
 
 function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
+    increaseCount();
 
     backPack.push();
-    renderBackPackCountBadge();
+    
     
 }
 function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
+    increaseCount();
     renderBackPackCountBadge();
 }
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
     gun.remove();
+    increaseCount();
 }
 function pickUpKnife() {
     const knife = document.querySelector("#knife");
     knife.remove()
+    increaseCount();
 }
 function pickUpKonserv() {
     const konserv = document.querySelector("#konserv");
     konserv.remove()
+    increaseCount();
 
 }function pickUpWater() {
     const water = document.querySelector("#water");
     water.remove()
+    increaseCount();
 }
 
 
@@ -275,18 +287,6 @@ function saveBackPackToLS(){ // bryter ner koder och s채tter en egen function f�
     cart = JSON.parse(backPackString);
    }
  }
-function renderBackPackCountBadge() { // Detta 채r den andra funktionen som s채ger till att siffran skall visas i headern i html
-    const span = document.getElementById("backPack-count");
-    span.textContent = backPack.length;
-
-}
-
-
-
-
-
-
-
 
 
 /*
