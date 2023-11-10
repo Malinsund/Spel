@@ -3,15 +3,13 @@ window.addEventListener("DOMContentLoaded", main);
 
 let mySound = new Audio('audio/dark-underworld-144813.mp3');
 let prassel = new Audio('audio/prassel.mp3');
+let zombieSound = new Audio ('audio/zomiesound.wav');
 
 
 function main (){
     loadBackPackFromLS();
-    renderBackPackCountBadge();
     setupSceneButtons();
     
-    
-    // showScene("start")
 }
 
 function setupSceneButtons() {
@@ -66,11 +64,11 @@ function renderSceneOutDoorStore() {
     backgroundImg.style.backgroundImage = 'url("Assets/grocerystore.png")';
     backgroundImg.style.backgroundSize = "cover";
 
-    mySound.pause();
+    //mySound.pause();
     prassel.play();
     
 } 
-
+// zombiescenen
 function renderSceneClothingStore() {
     var pharmacy = document.getElementById('outDoorStore');
 
@@ -85,6 +83,7 @@ function renderSceneClothingStore() {
 
     setTimeout(function(){
         zombieAttack.style.display = 'block';
+        zombieSound.play();
     }, 1500);
 
     const backgroundImg = document.querySelector("body");
@@ -178,9 +177,10 @@ function renderSceneBackDoor(){
 
 }
 
-/*här vill jag ju att inventory och rycksäcken skall fungera som en kundkorg/inventory*/
-
-// plocka ur functionerna här med precis som med scenerna!
+/** Ökar antal varje gång något föremål läggs i ryggsäcken ( count badge)
+ * @function 
+ * 
+ */
 function increaseCount(){
     let badge = document.getElementById('badgeCount');
     let currentCount = parseInt(badge.innerText);
@@ -189,7 +189,7 @@ function increaseCount(){
 
 
 
-//ta bort skiten från bilden
+// När man klickar på bilderna tas de bort och läggs i ryggsäcken
 document.getElementById("testBild").addEventListener('click', pickUpParacetamol); //test
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
@@ -201,10 +201,8 @@ document.getElementById("water").addEventListener('click', pickUpWater)
 function pickUpParacetamol() {
     const tablett = document.querySelector("#testBild");
     
-    
     tablett.remove();
-
-
+    increaseCount();
     
 }
 
@@ -214,7 +212,6 @@ function pickUpPenicillin() {
     increaseCount();
 
     backPack.push();
-    
     
 }
 function pickUpFirstAid() {
@@ -249,28 +246,10 @@ function pickUpKonserv() {
 
 let backPack = []
 
+   // backPack.push()
+   // saveBackPackToLS();
 
-//lägg till skit i inventory/ryggsäck kanske?
-/*
-function addToBackPack(backPack) {
-    const medicin = document.getElementById("#penicillin");
-    backPack.push(medicin);
-    renderPickUpCountBadge();
-}*/
-
-
-
-//penicillin.src
-
-
-//const pickUps = document.createElement("button");
-//pickUps.src = "Assets/penicillin.png";
-//pickUps.className = "penicillin";
-//.onclick = function(){
-   backPack.push()
-    saveBackPackToLS();
-
-    renderBackPackCountBadge();
+    //renderBackPackCountBadge();
 
   // testBild.append(backPack);
 //};

@@ -6,11 +6,21 @@ body {
 
 }
 header {
-    display: flex;
     margin: 0;
 }
 .backPack{
-    max-width: 10rem;
+    max-width: 5rem;
+}
+#badgeCount {
+    color: white;
+    font-size: xx-large;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background-color: rgb(117, 157, 117);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 0.2rem solid green;
 }
 h1 {
     font-family: 'Nosifer', sans-serif;
@@ -71,14 +81,7 @@ cursor: pointer;
     margin-left: 700px;
     margin-bottom: 500px;
 }
-.pickUp-count-Badge {
-    display: grid;
-    color: white;
-    place-items: center;
-    border-radius: 100rem;
-    width: 2rem;
-    height: 2rem;
-}
+
 #outDoorStore img{
     max-width: 10rem;
 }
