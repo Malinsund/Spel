@@ -5,6 +5,9 @@ body {
     background-size: cover;
 
 }
+#text{
+    font-size: x-large;
+}
 header {
     margin: 0;
 }
@@ -59,15 +62,16 @@ button {
     cursor: pointer;
 }
 #zombieAttack{
-    width: 90%;
+    display: flex;
+    width: 70%;
+    margin-left: 15%;
     text-align: center;
-    margin: auto;
     z-index: 3;
     position: absolute; 
+    background: rgba(0, 0, 0, 0.525);
 }
-#zombieAttackText {
-    background: black;
-}
+
+
 #pharmacy img {
 max-width: 10rem;
 cursor: pointer;
