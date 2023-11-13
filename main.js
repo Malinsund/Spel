@@ -1,8 +1,24 @@
 window.addEventListener("DOMContentLoaded", main);
 
+function main (){
+    loadBackPackFromLS();
+    setupSceneButtons();
+}
 
+/** Ljudeffekt
+ * 
+ * @type {HTMLAudioElement} bakgrundsmusik
+ */
 let mySound = new Audio('audio/dark-underworld-144813.mp3');
+/** Ljudeffekt
+ * 
+ * @type {HTMLAudioElement} prassel som hörs
+ */
 let prassel = new Audio('audio/prassel.mp3');
+/** Ljudeffekt
+ * 
+ * @type {HTMLAudioElement} ljudet zombien ger ifrån sig.
+ */
 let zombieSound = new Audio ('audio/zomiesound.wav');
 
 
@@ -15,10 +31,6 @@ backPackCount.className = "backPack";
 header.appendChild(backPackCount);
 
 
-function main (){
-    loadBackPackFromLS();
-    setupSceneButtons();
-}
 
 function setupSceneButtons() {
     /* här nedan växlar man mellan sidorna */
@@ -219,6 +231,8 @@ function pickUpPenicillin() {
     medicin.remove();
     increaseCount();
 
+    saveBackPackToLS();
+
     backPack.push();
     
 }
@@ -226,6 +240,8 @@ function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
     increaseCount();
+    saveBackPackToLS();
+    backPack.push();
 }
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
@@ -251,9 +267,9 @@ function pickUpKonserv() {
 
 let backPack = []
 
-   // backPack.push()
+
+   //backPack.push()
    // saveBackPackToLS();
-  // testBild.append(backPack);
 //};
 
 function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att spara kundkorgen till local storage
