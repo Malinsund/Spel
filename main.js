@@ -1,5 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
 
+window.localStorage
+
 function main (){
     loadBackPackFromLS();
     setupSceneButtons();
@@ -21,7 +23,7 @@ let prassel = new Audio('audio/prassel.mp3');
  */
 let zombieSound = new Audio ('audio/zomiesound.wav');
 
-
+/** lägger till bilden på ryggsäck i headern */
 const header = document.querySelector(".header"); 
 const backPackCount = document.createElement('img')
 backPackCount.src = "Assets/backpack.png";
@@ -31,7 +33,7 @@ backPackCount.className = "backPack";
 header.appendChild(backPackCount);
 
 
-
+/** De olika knapparna för att generera de olika scenerna. */
 function setupSceneButtons() {
     /* här nedan växlar man mellan sidorna */
     document.getElementById("nextSceneButton").addEventListener('click', renderScenePharmacy);
@@ -45,15 +47,8 @@ function setupSceneButtons() {
     document.getElementById("giveUp").addEventListener('click', renderGiveUpMessage);
 }
 
-// function showScene(htmlId) {
-//     const container = document.getElementById("content-container");
-//     const temp = document.getElementById(htmlId);
-//     const sceneHtml = temp.content.cloneNode(true)
-//     container.innerHTML = "";
-//     container.append(sceneHtml);
-// }
-/** Hämtar nästa scen och tar bort den gamla scenen via knapptryck, bakgrundbild och innehåll ändras
- * @function
+/** Funktionerna för de olika knapparna, tar bort nuvarande scen och genererar nästa scen.
+ * 
  */
 function renderScenePharmacy() {
     // kommer åt startsidan
@@ -118,8 +113,7 @@ function renderSceneClothingStore() {
     prassel.pause();
 
 }
-
-
+/** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
 function renderGoBackMessage() {
 
     let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
@@ -145,9 +139,10 @@ function renderGoBackMessage() {
 
 
 }
+/** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
 function renderGiveUpMessage() {
 
-    let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
+    let divContainer = document.createElement('div'); 
     divContainer.className = "go-back";
     divContainer.textContent = "Din Fegis!! \n Du har valt ett evigt miserabelt hjärn-ätar-liv \n lycka till!";
 
@@ -210,8 +205,6 @@ function increaseCount(){
     badge.innerText = currentCount + 1;
 }
 
-
-
 /** Här är de object/bilder man kan klicka på i spelet
  * 
  */
@@ -233,7 +226,8 @@ function pickUpPenicillin() {
 
     saveBackPackToLS();
 
-    backPack.push();
+    backPack.push(medicin);
+    console.log(backPack)
     
 }
 function pickUpFirstAid() {
@@ -241,36 +235,37 @@ function pickUpFirstAid() {
     medicin2.remove();
     increaseCount();
     saveBackPackToLS();
-    backPack.push();
+    backPack.push(medicin2);
 }
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
     gun.remove();
     increaseCount();
+    backPack.push(gun);
 }
 function pickUpKnife() {
     const knife = document.querySelector("#knife");
     knife.remove()
     increaseCount();
+    backPack.push(knife);
+
 }
 function pickUpKonserv() {
     const konserv = document.querySelector("#konserv");
     konserv.remove()
     increaseCount();
+    backPack.push(konserv);
 
-}function pickUpWater() {
+}
+function pickUpWater() {
     const water = document.querySelector("#water");
     water.remove()
     increaseCount();
+    backPack.push(water);
 }
-
 
 let backPack = []
 
-
-   //backPack.push()
-   // saveBackPackToLS();
-//};
 
 function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att spara kundkorgen till local storage
     const backPackString = JSON.stringify(backPack)
@@ -282,6 +277,7 @@ function saveBackPackToLS(){ // bryter ner koder och sätter en egen function f�
    if(localStorage.key("backPack")){
     const backPackString = localStorage.getItem('backPack');
     cart = JSON.parse(backPackString);
+    console.log(backPack)
    }
  }
 
