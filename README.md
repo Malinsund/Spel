@@ -27,4 +27,4 @@
 
 _detta är det första spelet jag har testat att göra med javaScript och har gett mig både huvudvärk och mycket kunskap! jag ser fram emot att lära mig mer för att kunna göra fler och mer avancerade saker, hade jag haft mer tid på mig skulle jag ha gjort fler vägval i spelet och även försökt göra det mer klurigt!_
 
-[Min Git-grej](https://malinsund.github.io/Spel/)
+[demo-länk](https://malinsund.github.io/Spel/)

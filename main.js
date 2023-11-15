@@ -2,9 +2,10 @@ window.addEventListener("DOMContentLoaded", main);
 
 window.localStorage
 
-function main (){
+function main() {
     loadBackPackFromLS();
     setupSceneButtons();
+    saveBackPackToLS();
 }
 
 /** Ljudeffekt
@@ -134,10 +135,6 @@ function renderGoBackMessage() {
     let parent = document.getElementById('clothingStore').parentNode;
     parent.replaceChild(divContainer, document.getElementById('clothingStore'));
 
-   // return divContainer();
-
-
-
 }
 /** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
 function renderGiveUpMessage() {
@@ -167,6 +164,7 @@ function renderGiveUpMessage() {
 }
 function renderSceneGrocerystore(){
     // kommer åt klädaffären
+    if (inventoryContainsKnife()){
     var clothingStore = document.getElementById('clothingStore');
 
     // tar bort klädaffären
@@ -180,6 +178,12 @@ function renderSceneGrocerystore(){
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/grocerystore1.png")';
     backgroundImg.style.backgroundSize = "cover";
+}else {
+    alert("du måste ha kniven för att döda Zombien!");
+}
+function inventoryContainsKnife(){
+    return backPack.some(item => item.id === "knife");
+}
 }
 function renderSceneBackDoor(){
     var groceryStore = document.getElementById('groceryStore');
@@ -194,6 +198,8 @@ function renderSceneBackDoor(){
     backgroundImg.style.backgroundSize = "cover";
 
 }
+
+let backPack = []
 
 /** Ökar antal varje gång något föremål läggs i ryggsäcken ( count badge)
  * @function 
@@ -215,10 +221,7 @@ document.getElementById("knife").addEventListener('click', pickUpKnife)
 document.getElementById("konserv").addEventListener('click', pickUpKonserv)
 document.getElementById("water").addEventListener('click', pickUpWater)
 
-/**Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom
- * 
- * @function
- */
+/**Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom*/
 function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
@@ -242,12 +245,14 @@ function pickUpGun() {
     gun.remove();
     increaseCount();
     backPack.push(gun);
+    saveBackPackToLS();
 }
 function pickUpKnife() {
     const knife = document.querySelector("#knife");
     knife.remove()
     increaseCount();
     backPack.push(knife);
+    saveBackPackToLS();
 
 }
 function pickUpKonserv() {
@@ -255,6 +260,7 @@ function pickUpKonserv() {
     konserv.remove()
     increaseCount();
     backPack.push(konserv);
+    saveBackPackToLS();
 
 }
 function pickUpWater() {
@@ -262,21 +268,19 @@ function pickUpWater() {
     water.remove()
     increaseCount();
     backPack.push(water);
+    saveBackPackToLS();
 }
 
-let backPack = []
 
-
-function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att spara kundkorgen till local storage
+function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att sparar ryggsäcken till local storage
     const backPackString = JSON.stringify(backPack)
     localStorage.setItem('backPack', backPackString);
  }
- /** Loads the cart from local storage and saves it to the global array. */
+ /** Laddar ryggsäcken? */
  function loadBackPackFromLS(){
-   // if (!localStorage.key('cart')) return;
    if(localStorage.key("backPack")){
     const backPackString = localStorage.getItem('backPack');
-    cart = JSON.parse(backPackString);
+    backPack = JSON.parse(backPackString);
     console.log(backPack)
    }
  }
