@@ -24,17 +24,24 @@ let prassel = new Audio('audio/prassel.mp3');
  */
 let zombieSound = new Audio ('audio/zomiesound.wav');
 
-/** lägger till bilden på ryggsäck i headern */
+/**
+* tar fram en bild på ryggsäck som läggs i header
+* @constant {HTMLElement} header hämtat den klassen där bilden skall ligga 
+* @constant {HTMLImageElement} backPackCount bilden som jag lagt till via JS
+* @memberOf document
+*/
 const header = document.querySelector(".header"); 
 const backPackCount = document.createElement('img')
 backPackCount.src = "Assets/backpack.png";
 backPackCount.className = "backPack";
 
-
 header.appendChild(backPackCount);
 
 
-/** De olika knapparna för att generera de olika scenerna. */
+/** De olika knapparna för att generera de olika scenerna. 
+ * @listens click och tillhörande funktion för att rndera de nya scenerna och ta bort den man är på.
+ * 
+*/
 function setupSceneButtons() {
     /* här nedan växlar man mellan sidorna */
     document.getElementById("nextSceneButton").addEventListener('click', renderScenePharmacy);
@@ -47,9 +54,11 @@ function setupSceneButtons() {
     document.getElementById("goBackButton").addEventListener('click', renderGoBackMessage);
     document.getElementById("giveUp").addEventListener('click', renderGiveUpMessage);
 }
-
-/** Funktionerna för de olika knapparna, tar bort nuvarande scen och genererar nästa scen.
+//Funktionerna för de olika knapparna, tar bort nuvarande scen och genererar nästa scen.
+/** tar fram apoteksscenen
  * 
+ * @function funktion som tar bort aktiv scen och tar fram nästa scen från HTML samt lägger till ny bakgrundsbild.
+ * @returns {void} finns inget att returnera
  */
 function renderScenePharmacy() {
     // kommer åt startsidan
@@ -69,6 +78,11 @@ function renderScenePharmacy() {
     backgroundImg.style.backgroundSize = "cover";
 
 }
+/** tar fram frilufsscenen
+ * 
+ * @function funktion som tar bort aktiv scen och tar fram nästa scen från HTML samt lägger till ny bakgrundsbild.
+ * @returns {void} finns inget att returnera
+ */
 function renderSceneOutDoorStore() {
     // kommer åt apoteket?
     var pharmacy = document.getElementById('pharmacy');
@@ -90,6 +104,11 @@ function renderSceneOutDoorStore() {
     
 } 
 // zombiescenen
+/** tar fram klädbutiksscenen
+ * 
+ * @function funktion som tar bort aktiv scen och tar fram nästa scen från HTML samt lägger till ny bakgrundsbild. även funktion för att ta fram zombie efter 1.5 sekunder
+ * @returns {void} finns inget att returnera
+ */
 function renderSceneClothingStore() {
     var pharmacy = document.getElementById('outDoorStore');
 
@@ -162,6 +181,11 @@ function renderGiveUpMessage() {
     
     
 }
+/** tar fram mataffärsscenen
+ * 
+ * @function funktion som tar bort aktiv scen och tar fram nästa scen från HTML samt lägger till ny bakgrundsbild.
+ * @returns {void} finns inget att returnera
+ */
 function renderSceneGrocerystore(){
     // kommer åt klädaffären
     if (inventoryContainsKnife()){
@@ -185,6 +209,11 @@ function inventoryContainsKnife(){
     return backPack.some(item => item.id === "knife");
 }
 }
+/** tar fram slutsscenen
+ * 
+ * @function funktion som tar bort aktiv scen och tar fram nästa scen från HTML samt lägger till ny bakgrundsbild.
+ * @returns {void} finns inget att returnera
+ */
 function renderSceneBackDoor(){
     var groceryStore = document.getElementById('groceryStore');
 
@@ -212,7 +241,8 @@ function increaseCount(){
 }
 
 /** Här är de object/bilder man kan klicka på i spelet
- * 
+ * @listens click gör att bilderna är klickbara
+ * @function funktioner som gör att föremålet försvinner från bilden
  */
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
@@ -271,12 +301,11 @@ function pickUpWater() {
     saveBackPackToLS();
 }
 
-
-function saveBackPackToLS(){ // bryter ner koder och sätter en egen function för att sparar ryggsäcken till local storage
+function saveBackPackToLS(){ // sparar ryggsäcken till local storage
     const backPackString = JSON.stringify(backPack)
     localStorage.setItem('backPack', backPackString);
  }
- /** Laddar ryggsäcken? */
+ /** hoppas på att denna laddar från local storage */
  function loadBackPackFromLS(){
    if(localStorage.key("backPack")){
     const backPackString = localStorage.getItem('backPack');
