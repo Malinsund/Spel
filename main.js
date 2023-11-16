@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", main);
 
 window.localStorage
-
+//huvudfunktioner
 function main() {
     loadBackPackFromLS();
     setupSceneButtons();
@@ -43,15 +43,43 @@ header.appendChild(backPackCount);
  * 
 */
 function setupSceneButtons() {
-    /* här nedan växlar man mellan sidorna */
+    // knapparna som gör att man växlar man mellan sidorna 
+    /** apoteket knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function renderscenebuttons - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("nextSceneButton").addEventListener('click', renderScenePharmacy);
+    /** Frilufsbutiken knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function renderscenebuttons - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("outDoorStoreButton").addEventListener('click', renderSceneOutDoorStore);
+    /** Klädaffär knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function renderscenebuttons - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("clothingStoreButton").addEventListener('click', renderSceneClothingStore);
+    /** Matbutiken knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function renderscenebuttons - utför funktionen när när man klickat på knappen
+     */
     document.getElementById('kill').addEventListener('click', renderSceneGrocerystore);
+    /** bakdörren knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function renderscenebuttons - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("backDoorButton").addEventListener('click', renderSceneBackDoor);
 
-    /* dessa två är vid flervalsfrågan på zombie-attack scenen */
+    // dessa två är vid flervalsfrågan på zombie-attack scenen 
+    /** gå tillbaka knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function goBackButton - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("goBackButton").addEventListener('click', renderGoBackMessage);
+    /** ge upp knappen
+     * @listens click - det är en clickbar knapp som när man klickar på den genomför följande function.
+     * @function giveUp - utför funktionen när när man klickat på knappen
+     */
     document.getElementById("giveUp").addEventListener('click', renderGiveUpMessage);
 }
 //Funktionerna för de olika knapparna, tar bort nuvarande scen och genererar nästa scen.
@@ -242,7 +270,7 @@ function increaseCount(){
 
 /** Här är de object/bilder man kan klicka på i spelet
  * @listens click gör att bilderna är klickbara
- * @function funktioner som gör att föremålet försvinner från bilden
+ * @function funktioner som gör att föremålet försvinner från bilden, ökar antal bredvid ryggsäcken och lägger i inventory(ryggsäck)
  */
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
@@ -251,7 +279,10 @@ document.getElementById("knife").addEventListener('click', pickUpKnife)
 document.getElementById("konserv").addEventListener('click', pickUpKonserv)
 document.getElementById("water").addEventListener('click', pickUpWater)
 
-/**Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom*/
+//Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom
+/** funktion för att plocka upp penicillin
+ * @function pickUpPenicillin tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpPenicillin() {
     const medicin = document.querySelector("#penicillin");
     medicin.remove();
@@ -263,6 +294,9 @@ function pickUpPenicillin() {
     console.log(backPack)
     
 }
+/** funktion för att plocka upp första hjälpen
+ * @function pickUpFirstAid tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpFirstAid() {
     const medicin2 = document.querySelector("#firstAid");
     medicin2.remove();
@@ -270,6 +304,9 @@ function pickUpFirstAid() {
     saveBackPackToLS();
     backPack.push(medicin2);
 }
+/** funktion för att plocka upp pistolen
+ * @function pickUpGun tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpGun() {
     const gun = document.querySelector("#pistol");
     gun.remove();
@@ -277,6 +314,9 @@ function pickUpGun() {
     backPack.push(gun);
     saveBackPackToLS();
 }
+/** funktion för att plocka upp kniven
+ * @function pickUpKnife tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpKnife() {
     const knife = document.querySelector("#knife");
     knife.remove()
@@ -285,6 +325,9 @@ function pickUpKnife() {
     saveBackPackToLS();
 
 }
+/** funktion för att plocka upp konservburk
+ * @function pickUpKonserv tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpKonserv() {
     const konserv = document.querySelector("#konserv");
     konserv.remove()
@@ -293,6 +336,9 @@ function pickUpKonserv() {
     saveBackPackToLS();
 
 }
+/** funktion för att plocka upp vattenflaska
+ * @function pickUpWater tar bort bilden från skärmen efter klick, lägger till i ryggsäck och sparar till LS och ökar siffran bredvid ryggsäcken
+ */
 function pickUpWater() {
     const water = document.querySelector("#water");
     water.remove()
