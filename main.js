@@ -41,7 +41,7 @@ header.appendChild(backPackCount);
 
 
 /** De olika knapparna för att generera de olika scenerna. 
- * @listens click och tillhörande funktion för att rndera de nya scenerna och ta bort den man är på.
+ * @listens click och tillhörande funktion för att rendera de nya scenerna och ta bort den man är på.
  * 
 */
 function setupSceneButtons() {
@@ -84,6 +84,7 @@ function setupSceneButtons() {
      */
     document.getElementById("giveUp").addEventListener('click', renderGiveUpMessage);
 }
+
 //Funktionerna för de olika knapparna, tar bort nuvarande scen och genererar nästa scen.
 /** tar fram apoteksscenen
  * 
@@ -164,18 +165,26 @@ function renderSceneClothingStore() {
     prassel.pause(); // gör så att prasslet slutar när man kommer till denna scenen
 
 }
-/** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
+/** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan 
+ * @function renderGoBackMessage - vad som händeroch visas när man klickar på knappen "spring tillbaka"
+ * 
+*/
 function renderGoBackMessage() {
-
+    /**skapar en HTML div
+     *  * @type {HTMLDivElement} skapar en div med text i.
+     */
     let divContainer = document.createElement('div');  //skapar ett HTML element
     divContainer.className = "go-back";// ger elementet en class
     divContainer.textContent = "NEEEEJ, när du vände dig om fick zombien tag på dig! du har nu blivit middag"; //vad som står i elementet och det användaren kan läsa
 
-    // skapar en knapp med class och text med en funktion där användaren vid klick skickas tillbaka till startscenen.
-    const confirmButton = document.createElement('button');
-    confirmButton.className = "confirm-button";
-    confirmButton.textContent = "BU!";
-    confirmButton.onclick = function(){
+    
+    /**skapar en knapp med class och text med en funktion där användaren vid klick skickas tillbaka till startscenen.
+     *  * @type {HTMLButtonElement} skapar en knapp
+     */
+    const confirmButton = document.createElement('button'); //skapar knappen
+    confirmButton.className = "confirm-button"; //ger knappen en klass
+    confirmButton.textContent = "BU!"; // vad det står på knappen
+    confirmButton.onclick = function(){ //funktionen som gör att man hamnar på startsidan vid klick på knappen
        location.reload();
     
     },
