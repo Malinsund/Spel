@@ -198,7 +198,7 @@ function renderSceneBackDoor(){
     backgroundImg.style.backgroundSize = "cover";
 
 }
-
+/** Ryggsäcken som i detta spelet är ett inventory */
 let backPack = []
 
 /** Ökar antal varje gång något föremål läggs i ryggsäcken ( count badge)
