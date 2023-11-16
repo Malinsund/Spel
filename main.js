@@ -1,6 +1,8 @@
+/** utlöser main-functionerna när DOM-innehållet har laddats */
 window.addEventListener("DOMContentLoaded", main);
 
 window.localStorage
+
 //huvudfunktioner
 function main() {
     loadBackPackFromLS();
@@ -147,27 +149,29 @@ function renderSceneClothingStore() {
     // visar klädbutiken
     clothingStore.style.display = 'block';
 
+    // hämtar element från HTML som med funktion dyker upp efter 1.5 sekunder
     const zombie = document.getElementById('zombieAttack');
-
+    // Funktionen för att ta fram HTML-elementet och samtidigt spelar upp ljudeffekt.
     setTimeout(function(){
         zombieAttack.style.display = 'block';
         zombieSound.play();
     }, 1500);
-
+    // byter bakgrundsbild
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/clothingstore.png")';
     backgroundImg.style.backgroundSize = "cover";
 
-    prassel.pause();
+    prassel.pause(); // gör så att prasslet slutar när man kommer till denna scenen
 
 }
 /** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
 function renderGoBackMessage() {
 
-    let divContainer = document.createElement('div');  //felmeddelande i inspektera?? whyyyyyyy???
-    divContainer.className = "go-back";
-    divContainer.textContent = "NEEEEJ, när du vände dig om fick zombien tag på dig! du har nu blivit middag";
+    let divContainer = document.createElement('div');  //skapar ett HTML element
+    divContainer.className = "go-back";// ger elementet en class
+    divContainer.textContent = "NEEEEJ, när du vände dig om fick zombien tag på dig! du har nu blivit middag"; //vad som står i elementet och det användaren kan läsa
 
+    // skapar en knapp med class och text med en funktion där användaren vid klick skickas tillbaka till startscenen.
     const confirmButton = document.createElement('button');
     confirmButton.className = "confirm-button";
     confirmButton.textContent = "BU!";
@@ -185,24 +189,24 @@ function renderGoBackMessage() {
 }
 /** Genererar ny HTML vid tryck på knappen med en funktion som tar användaren tillbaka till förstasidan */
 function renderGiveUpMessage() {
-
+    //Skapar ett HTML-element i form av en div med classnamn för att stylea i CSS med en text som användaren läser
     let divContainer = document.createElement('div'); 
     divContainer.className = "go-back";
     divContainer.textContent = "Din Fegis!! \n Du har valt ett evigt miserabelt hjärn-ätar-liv \n lycka till!";
-
+    // skapar en knapp med class och text som vid klick skickar användaren till startscenen
     const confirmButton = document.createElement('button');
     confirmButton.className = "confirm-button";
     confirmButton.textContent = "BU!";
     confirmButton.onclick = function(){
         location.reload();
     },    
-    
+    // append för att det skall synas på skärmen
     document.body.appendChild(divContainer);
     divContainer.append(confirmButton);
     
     let parent = document.getElementById('clothingStore').parentNode;
     parent.replaceChild(divContainer, document.getElementById('clothingStore'));
-
+    // ändrar bakgrund 
     const backgroundImg = document.querySelector("body");
     backgroundImg.style.backgroundImage = 'url("Assets/dead.png")';
     backgroundImg.style.backgroundSize = "cover";
@@ -268,16 +272,38 @@ function increaseCount(){
     badge.innerText = currentCount + 1;
 }
 
-/** Här är de object/bilder man kan klicka på i spelet
- * @listens click gör att bilderna är klickbara
- * @function funktioner som gör att föremålet försvinner från bilden, ökar antal bredvid ryggsäcken och lägger i inventory(ryggsäck)
+//Här är de object/bilder man kan klicka på i spelet
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpPenicillin pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
  */
 document.getElementById("penicillin").addEventListener('click', pickUpPenicillin);
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpFirstAid pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
+ */
 document.getElementById("firstAid").addEventListener('click', pickUpFirstAid);
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpGun pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
+ */
 document.getElementById("pistol").addEventListener('click', pickUpGun);
-document.getElementById("knife").addEventListener('click', pickUpKnife)
-document.getElementById("konserv").addEventListener('click', pickUpKonserv)
-document.getElementById("water").addEventListener('click', pickUpWater)
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpKnife pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
+ */
+document.getElementById("knife").addEventListener('click', pickUpKnife);
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpKonserv pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
+ */
+document.getElementById("konserv").addEventListener('click', pickUpKonserv);
+/** hämtar bild Från HTML och sätter funktioner på den
+ * @listens click gör att bilden är klickbar
+ * @function pickUpWater pekar till funktionen som gör att bilden försvinner, läggs i ryggsäck och räknar upp antal i ryggsäcken
+ */
+document.getElementById("water").addEventListener('click', pickUpWater);
+
 
 //Funktioner För att ta bort object/bilder från spelet och lägga de i ryggsäcken när man klickar på dom
 /** funktion för att plocka upp penicillin
@@ -346,8 +372,8 @@ function pickUpWater() {
     backPack.push(water);
     saveBackPackToLS();
 }
-
-function saveBackPackToLS(){ // sparar ryggsäcken till local storage
+/** Sparar datan till local Strage genom att convertera till JSON string */
+function saveBackPackToLS(){ 
     const backPackString = JSON.stringify(backPack)
     localStorage.setItem('backPack', backPackString);
  }
